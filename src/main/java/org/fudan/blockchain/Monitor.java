@@ -35,6 +35,14 @@ public class Monitor {
         this(inputPath, outputPath, true, duration);
     }
 
+    /**
+     * 初始化监视器
+     * @param inputPath     监听路径（目录）
+     * @param outputPath    输出分析结果路径（目录）
+     * @param append        是否追加写（false为覆盖写）
+     * @param duration      监听时常
+     * @throws IOException  IO异常
+     */
     Monitor(String inputPath, String outputPath, boolean append, long duration) throws IOException {
         log.info("Monitor Init ...");
         log.info("inputPath: {}, outputPath: {}, append: {}, duration: {} (s)", inputPath, outputPath, append, duration);
@@ -48,6 +56,10 @@ public class Monitor {
         FileUtils.forceMkdir(resultDirectory);
     }
 
+    /**
+     * 开始监听inputPath目录
+     * @throws IOException
+     */
     void start() throws IOException {
         log.info("Start Monitoring ...");
         this.startTime = System.currentTimeMillis();
@@ -67,6 +79,9 @@ public class Monitor {
         log.info("Time is over.");
     }
 
+    /**
+     * 关闭监听
+     */
     public void close(){
         resultAnalysis.close();
     }
